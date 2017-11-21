@@ -12,43 +12,43 @@ import { View, h } from 'fractal-core/interfaces/view'
 export const name = 'Root'
 
 export const state = {
-  imprimir: false,
+  printing: false,
   text: '',
 }
 
 export type S = typeof state
 
-export const inputs: Inputs<S> = ({ toAct, runIt, ev, stateOf }) => ({
-  imprimir: async () => {
-    let s: S = stateOf()
-    await runIt(['imprimir', [s.text, ev('impresionF')]])
-    await toAct('SetImprimir', true)
+export const inputs: Inputs = F => ({
+  print: async () => {
+    let s: S = F.stateOf()
+    await F.runIt(['print', [s.text, F.ev('printEnd')]])
+    await F.toAct('SetPrinting', true)
   },
-  impresionF: async() => {
-    await runIt(['alert', 'Impresion finalizada'])
-    await toAct('SetImprimir', false)
+  printEnd: async () => {
+    await F.runIt(['alert', 'Printing finished'])
+    await F.toAct('SetPrinting', false)
   },
 })
 
 export const actions: Actions<S> = {
-  SetImprimir: value => s => {
-    s.imprimir = value
+  SetPrinting: value => s => {
+    s.printing = value
     return s
   },
   SetText: assoc('text'),
 }
 
-const view: View<S> = ({ ctx, ev, act }) => s => {
-  let style = ctx.groups.style
+const view: View<S> = F => async s => {
+  let style = F.ctx.groups.style
 
   return h('div', {
-    key: ctx.name,
+    key: F.ctx.name,
     class: { [style.base]: true },
   }, [
     h('input', {
       class: { [style.input]: true },
       on: {
-        input: act('SetText', _, ['target', 'value']),
+        input: F.act('SetText', _, ['target', 'value']),
       },
     }),
     h('div', {
@@ -56,11 +56,11 @@ const view: View<S> = ({ ctx, ev, act }) => s => {
         [style.button]: true,
       },
       on: {
-        click: ev('imprimir'),
+        click: F.ev('print'),
       },
-    },  'Imprimir'),
-    ...s.imprimir ? [
-      h('div', {class: { [style.text]: true }}, 'Imprimiendo...'),
+    }, 'Print'),
+    ...s.printing ? [
+      h('div', {class: { [style.text]: true }}, 'Printing...'),
     ] : [],
   ])
 }
