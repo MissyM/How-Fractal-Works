@@ -1,13 +1,11 @@
-[![codecov](https://codecov.io/gh/FractalBlocks/Fractal-quickstart/branch/master/graph/badge.svg)](https://codecov.io/gh/FractalBlocks/Fractal-quickstart)
-[![Build Status](https://travis-ci.org/FractalBlocks/Fractal-quickstart.svg?branch=master)](https://travis-ci.org/FractalBlocks/Fractal-quickstart)
-[![Join the chat at https://gitter.im/Fractal-core/Lobby](https://badges.gitter.im/Fractal-core/Lobby.svg)](https://gitter.im/Fractal-core/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-# Fractal-quickstart
 
-Quistart project for Fractal framework, now we use :fire:[FuseBox](https://github.com/fuse-box/fuse-box):fire:! as bundle/loader system, which allows a blazingly fast develelopment and production building
+# How-Fractal-Works
+
+How-Fractal-Works project for Fractal framework, now we use :fire:[FuseBox](https://github.com/fuse-box/fuse-box):fire:! as bundle/loader system, which allows a blazingly fast develelopment and production building
 
 So you are here, this how you can use this repo:
 
-- [download this repo](https://github.com/FractalBlocks/Fractal-quickstart/archive/master.zip)
+- Download this repo
 - uncompress the downloaded file
 - open the folder
 - be sure you have [Node.js](https://nodejs.org/en/) installed
