@@ -9,7 +9,6 @@ import {
 } from 'fractal-core'
 import { View, h } from 'fractal-core/interfaces/view'
 
-export const name = 'Root'
 
 export const state = {
   printing: false,
